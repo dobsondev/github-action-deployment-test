@@ -13,7 +13,8 @@ jobs:
 
     - name: Sync
       env:
-        dest: 'ubuntu@${{secrets.SSH_IP}}:/home/ubuntu/test-deployment'
+        # dest: 'ubuntu@${{secrets.SSH_IP}}:/home/ubuntu/test-deployment'
+        dest: 'ubuntu@${{secrets.SSH_IP}}:/var/www/vhosts/dobson.pw/httpdocs/'
       run: |
         echo "${{secrets.SSH_KEY}}" > deploy_key
         chmod 600 ./deploy_key
@@ -23,4 +24,3 @@ jobs:
           --exclude /.git/ \
           --exclude /.github/ \
           ./ ${{env.dest}}
-
