@@ -13,7 +13,7 @@ jobs:
 
     - name: Sync
       env:
-        dest: 'ubuntu@${{secrets.SSH_KEY}}:/home/ubuntu/test-deployment'
+        dest: 'ubuntu@${{secrets.SSH_IP}}:/home/ubuntu/test-deployment'
       run: |
         echo "${{secrets.SSH_KEY}}" > deploy_key
         chmod 600 ./deploy_key
