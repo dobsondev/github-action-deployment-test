@@ -13,9 +13,9 @@ jobs:
 
     - name: Sync
       env:
-        dest: 'ubuntu@44.235.46.163:/home/ubuntu/test-deployment'
+        dest: 'ubuntu@${{secrets.SSH_KEY}}:/home/ubuntu/test-deployment'
       run: |
-        echo "${{secrets.DobsonDev_Plesk_Hosting_Stack_on_Ubuntu_1_KEY}}" > deploy_key
+        echo "${{secrets.SSH_KEY}}" > deploy_key
         chmod 600 ./deploy_key
         rsync -chav --delete \
           -e 'ssh -i ./deploy_key -o StrictHostKeyChecking=no' \
